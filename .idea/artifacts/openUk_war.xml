@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="openUk:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="openUk.war">
+      <element id="artifact" artifact-name="openUk:war exploded" />
+    </root>
+  </artifact>
+</component>
