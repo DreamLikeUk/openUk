@@ -1,4 +1,4 @@
-package com.dream.like.uk;
+package com.dream.like.uk.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
