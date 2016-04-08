@@ -2,16 +2,47 @@ package com.dream.like.uk.domain.entities;
 
 import com.dream.like.uk.domain.enums.RoleEnum;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Stacy on 2/12/16.
  */
+@Entity
+@Table(name = "roles")
 public class RoleEntity {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @Column(name = "name")
+    @Enumerated(EnumType.STRING)
     private RoleEnum role;
-    private List<PermissionEntity> permissions = new ArrayList<PermissionEntity>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "role_permissions", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = { @JoinColumn(name = "permission_id") })
+    private Set<PermissionEntity> permissions;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RoleEntity)) return false;
+
+        RoleEntity that = (RoleEntity) o;
+
+        if (!id.equals(that.id)) return false;
+        if (permissions != null ? !permissions.equals(that.permissions) : that.permissions != null) return false;
+        if (role != that.role) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (permissions != null ? permissions.hashCode() : 0);
+        return result;
+    }
 
     public Integer getId() {
         return id;
@@ -29,49 +60,20 @@ public class RoleEntity {
         this.role = role;
     }
 
-    public List<PermissionEntity> getPermissions() {
+    public Set<PermissionEntity> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(List<PermissionEntity> permissionEntities) {
-        this.permissions = permissionEntities;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        RoleEntity that = (RoleEntity) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (role != null ? !role.equals(that.role) : that.role != null) return false;
-        if (permissions != null ? !permissions.equals(that.permissions) : that.permissions != null) return false;
-
-        return true;
-    }
-
-    public boolean equals(String o) {
-        if (role != null ? !role.equals(o) : o != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (permissions != null ? permissions.hashCode() : 0);
-        return result;
+    public void setPermissions(Set<PermissionEntity> permissions) {
+        this.permissions = permissions;
     }
 
     @Override
     public String toString() {
         return "RoleEntity{" +
                 "id=" + id +
-                ", name='" + role + '\'' +
+                ", role=" + role +
                 ", permissions=" + permissions +
                 '}';
     }
-
 }

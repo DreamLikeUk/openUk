@@ -1,58 +1,86 @@
 package com.dream.like.uk.domain.entities;
 
+import com.dream.like.uk.domain.enums.UserStatusEnum;
+
+import javax.persistence.*;
+
 /**
  * Created by Stacy on 2/12/16.
  */
+@Entity
+@Table(name = "users")
 public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Integer id;
-
+    @Column(name = "email")
     private String email;
-
+    @Column(name = "password")
     private String password;
+    @Column(name = "username")
+    private String username;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", nullable = false)
+    private RoleEntity roleEntity;
+    @Column(name = "active")
+    private boolean active;
 
-    private String name;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private UserStatusEnum status;
 
-    public RoleEntity getRole() {
-        return role;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setRole(RoleEntity role) {
-        this.role = role;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
-    public String getName() {
-        return name;
+    public UserStatusEnum getStatus() {
+        return status;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStatus(UserStatusEnum status) {
+        this.status = status;
     }
 
     public Integer getId() {
         return id;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    private RoleEntity role;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setRoleEntity(RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -62,22 +90,27 @@ public class UserEntity {
         UserEntity that = (UserEntity) o;
 
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (role != null ? !role.equals(that.role) : that.role != null) return false;
+        if (!id.equals(that.id)) return false;
+        if (!password.equals(that.password)) return false;
+        if (!roleEntity.equals(that.roleEntity)) return false;
+        if (!username.equals(that.username)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id.hashCode();
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + password.hashCode();
+        result = 31 * result + username.hashCode();
+        result = 31 * result + roleEntity.hashCode();
         return result;
+    }
+
+    public RoleEntity getRoleEntity() {
+        return roleEntity;
+
     }
 
     @Override
@@ -86,8 +119,7 @@ public class UserEntity {
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", role=" + role +
-                '}';
+                ", username='" + username + '\'' +
+                "}";
     }
 }

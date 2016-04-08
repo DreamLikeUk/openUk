@@ -1,11 +1,22 @@
 package com.dream.like.uk.domain.entities;
 
+import com.dream.like.uk.domain.enums.PermissionEnum;
+
+import javax.persistence.*;
+
 /**
  * Created by Stacy on 2/12/16.
  */
+@Entity
+@Table(name = "permissions")
 public class PermissionEntity {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue
     private Integer id;
-    private String name;
+    @Column(name = "name")
+    @Enumerated(EnumType.STRING)
+    private PermissionEnum name;
 
     public Integer getId() {
         return id;
@@ -15,11 +26,11 @@ public class PermissionEntity {
         this.id = id;
     }
 
-    public String getName() {
+    public PermissionEnum getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(PermissionEnum name) {
         this.name = name;
     }
 
