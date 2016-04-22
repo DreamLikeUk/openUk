@@ -30,6 +30,9 @@ public class UserEntity {
     @Enumerated(EnumType.STRING)
     private UserStatusEnum status;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "level")
+    private RankEntity rankEntity;
     public boolean isActive() {
         return active;
     }
@@ -80,6 +83,14 @@ public class UserEntity {
 
     public void setRoleEntity(RoleEntity roleEntity) {
         this.roleEntity = roleEntity;
+    }
+
+    public RankEntity getRankEntity() {
+        return rankEntity;
+    }
+
+    public void setRankEntity(RankEntity rankEntity) {
+        this.rankEntity = rankEntity;
     }
 
     @Override

@@ -17,5 +17,7 @@
         <mapping class="com.dream.like.uk.domain.entities.UserEntity"/>
         <mapping class="com.dream.like.uk.domain.entities.RoleEntity"/>
         <mapping class="com.dream.like.uk.domain.entities.PermissionEntity"/>
+        <mapping class="com.dream.like.uk.domain.entities.RankEntity"/>
+        <mapping class="com.dream.like.uk.domain.entities.CategoryEntity"/>
     </session-factory>
 </hibernate-configuration>
