@@ -19,3 +19,4 @@ http://www.springframework.org/schema/security/spring-security-4.0.xsd">
        <beans:bean id="customUserDetailsService" class="com.dream.like.uk.services.impl.CustomUserDetailsService" />
        <beans:bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
 </beans:beans>
+
