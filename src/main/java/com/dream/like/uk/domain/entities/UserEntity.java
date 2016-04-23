@@ -23,7 +23,7 @@ public class UserEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", nullable = false)
     private RoleEntity roleEntity;
-    
+
     @Column(name = "active")
     private boolean active;
     @Column(name = "status")
