@@ -28,10 +28,10 @@
             </div>
     <br/>
     <br/>
-   <h4> <span class="label label-pill label-info">Нік: </h4></span> <h5><em>(тут буде виведено нік користувача)</em></h5>
-   <h4> <span class="label label-pill label-success">Електронна адреса: </h4></span><h5><em>(тут буде виведено електронну адресу користувача)</em></h5>
-   <h4> <span class="label label-pill label-warning">Статус: </h4></span><h5><em>(тут буде виведено статус користувача) (подумати над зміною кольору при здoбутті нового статусу)</em></h5>
-   <h4> <span class="label label-pill label-primary">Бали: </h4></span><h5><em>(тут буде виведено бали користувача)</em></h5>
+   <h4> <span class="label label-pill label-info">Нік: </span></h4> <h5><em>(тут буде виведено нік користувача)</em></h5>
+   <h4> <span class="label label-pill label-success">Електронна адреса: </span></h4><h5><em>(тут буде виведено електронну адресу користувача)</em></h5>
+   <h4> <span class="label label-pill label-warning">Статус: </span></h4><h5><em>(тут буде виведено статус користувача) (подумати над зміною кольору при здoбутті нового статусу)</em></h5>
+   <h4> <span class="label label-pill label-primary">Бали: </span></h4><h5><em>(тут буде виведено бали користувача)</em></h5>
 
 
     
@@ -42,7 +42,7 @@
     
     
     
-    
+    <!-- This should go to the footer -->
     <br/>
     <br/>
     <div align = "right">

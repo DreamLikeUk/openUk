@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 	@Autowired
 	private IUserService userService;
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String getMain(ModelMap model) {
-		model.addAttribute("main", "openUk main page, hello!");
 		return "index";
 	}
 }

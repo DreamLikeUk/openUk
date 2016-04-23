@@ -14,25 +14,24 @@
 
     <link rel="stylesheet" type="text/css" href="css/index.css ">
 
-    <title>Вітаємо на порталі OpenUk</title>
+    <title><spring:message code="main.title"/> </title>
 
 </head>
 <body>
-${main}<br/>
-<security:authentication property="principal.username"/>
-
+<!-- All navigation should go to header -->
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Головна</a></li>
+        <li role="presentation" class="active"><a href="#"><spring:message code="main.home"/> </a></li>
 
-        <li role="presentation"><a href="about.html">Про нас</a></li>
-        <li role="presentation"><a href="user_home.html">Кабінет користувача</a></li>
+        <li role="presentation"><a href="about.html"><spring:message code="main.about"/></a></li>
+        <li role="presentation"><a href="user_home.html"><spring:message code="main.user"/></a></li>
     </ul>
     <br/>
-    <h5style="text-align:right;"><a href="#" >Увійти</a></h5>
+    <h5 style="text-align:right;"><a href="#" >Увійти</a></h5>
     <h5><a href="#" align="rightright">Зареєструватися</a></h5>
     <br/>
+<!-- Up to this point -->
     <h3><label align="middle" style="font-family:verdana;">Вітаємо на порталі OpenUk<br/>
-    Для вдосконалення своїх знань, будь ласка, оберіть категорію<label></h3>
+    Для вдосконалення своїх знань, будь ласка, оберіть категорію</label></h3>
     <div class="list-group" width="80" height="200" align="middle">
     <a href="#" class="list-group-item active">Орфографія</a>
     <a href="#" class="list-group-item">Фразеологія</a>
