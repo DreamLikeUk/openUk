@@ -1,12 +1,34 @@
 package com.dream.like.uk.domain.entities;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by Stacy on 2/12/16.
  */
+@Table(name = "categories")
+@Entity
 public class CategoryEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
+
+    @NotBlank
+    @Length(max = 45)
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
+    @Length(max = 100)
     private String description;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private Set<QuestionEntity> questions;
 
     public int getId() {
         return id;
@@ -54,12 +76,30 @@ public class CategoryEntity {
         return result;
     }
 
+    public Set<QuestionEntity> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<QuestionEntity> questions) {
+        this.questions = questions;
+    }
+
     @Override
     public String toString() {
         return "CategoryEntity{" +
                 "id=" + id +
+
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    public CategoryEntity(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public CategoryEntity() {
+
     }
 }

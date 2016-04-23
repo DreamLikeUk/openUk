@@ -19,5 +19,10 @@
         <mapping class="com.dream.like.uk.domain.entities.PermissionEntity"/>
         <mapping class="com.dream.like.uk.domain.entities.RankEntity"/>
         <mapping class="com.dream.like.uk.domain.entities.CategoryEntity"/>
+        <mapping class="com.dream.like.uk.domain.entities.QuestionEntity"/>
+        <mapping class="com.dream.like.uk.domain.entities.UserQuestionEntity"/>
+        <mapping class="com.dream.like.uk.domain.entities.BadgeEntity"/>
+        <mapping class="com.dream.like.uk.domain.entities.UserBadgeEntity"/>
+        <mapping class="com.dream.like.uk.domain.entities.AnswerEntity"/>
     </session-factory>
 </hibernate-configuration>

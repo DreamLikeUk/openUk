@@ -41,6 +41,7 @@
                 <ul class="nav navbar-nav navbar-left">
                     <li class="hvr-bounce-to-bottom active"><a href="/"><spring:message code="main.home"/></a></li>
                     <li class="hvr-bounce-to-bottom "><a href="/"><spring:message code="main.about"/></a></li>
+                    <li class="hvr-bounce-to-bottom "><a href="/"><spring:message code="main.user"/></a></li>
                 </ul>
                 <div class="clearfix"> </div>
             </div>
@@ -58,7 +59,7 @@
             <!-- Test version would be moved to ejs files -->
             <div class="col-md-4">
                 <div>
-                    <img src="http://lorempixel.com/200/200/abstract/1/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+                    <img src="http://image.zn.ua/media/images/614xX/Jan2011/6150.jpg" alt="Texto Alternativo" class="img-circle img-thumbnail">
                     <h2>Орфографія</h2>
                     <p>Category description          </p>
                     <a href="#" class="btn btn-primary" title="See more">Почати!</a>
@@ -66,21 +67,14 @@
             </div>
             <div class="col-md-4">
                 <div>
-                    <img src="http://lorempixel.com/200/200/abstract/2/" alt="Texto Alternativo" class="img-circle img-thumbnail">
+                    <img src="http://ostriv.in.ua/images/publications/4/3889/1313477158.gif" alt="Texto Alternativo" class="img-circle img-thumbnail">
                     <h2>Фразеологія</h2>
                     <p>Category description          </p>
                     <a href="#" class="btn btn-primary" title="See more">Почати!</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div>
-                    <img src="http://lorempixel.com/200/200/abstract/3/" alt="Texto Alternativo" class="img-circle img-thumbnail">
-                    <h2>Лексика</h2>
-                    <p>Category description          </p>
-                    <a href="#" class="btn btn-primary" title="See more">Почати!</a>
-                </div>
-            </div>
         </div>
+    </div>
         <!-- /container -->
 <script src="/resources/js/bootstrap.js"></script>
 </body>
