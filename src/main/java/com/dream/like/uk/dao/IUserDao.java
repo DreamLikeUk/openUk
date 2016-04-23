@@ -21,25 +21,4 @@ public interface IUserDao {
      */
     UserEntity getUserByMail(String mail);
 
-    /**
-     * Creates or updates the user
-     * @param user
-     * @return
-     */
-    UserEntity updateUser(UserEntity user);
-
-    /**
-     * Delete user, which corresponds to given id
-     * @param userId
-     * @return
-     */
-    boolean deleteUser(int userId);
-
-    /**
-     * Returns role of the given user
-     * @param userEntity
-     * @return
-     */
-    RoleEnum getUserRole(UserEntity userEntity);
-
 }
