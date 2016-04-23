@@ -3,6 +3,7 @@ package com.dream.like.uk.domain.entities;
 import com.dream.like.uk.domain.enums.UserStatusEnum;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Stacy on 2/12/16.

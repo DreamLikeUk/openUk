@@ -13,8 +13,4 @@ public class RankDao extends BaseDao<RankEntity>implements IRankDao {
     protected Class<RankEntity> getCurrentClass() {
         return RankEntity.class;
     }
-    @Override
-    public RankEntity getById(int id) {
-        return get(id);
-    }
 }

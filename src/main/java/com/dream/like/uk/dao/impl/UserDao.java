@@ -25,11 +25,6 @@ public class UserDao extends BaseDao<UserEntity> implements IUserDao {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public UserEntity getById(int userId) {
-        return get(userId);
-    }
-
-    @Override
     public UserEntity getUserByMail(String mail) {
         List<Criterion> criterions = Lists.<Criterion>newArrayList
                 (Restrictions.like("email", mail));

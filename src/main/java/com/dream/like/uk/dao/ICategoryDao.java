@@ -7,10 +7,4 @@ import com.dream.like.uk.domain.entities.CategoryEntity;
  */
 public interface ICategoryDao {
 
-    /**
-     * Returns category
-     * @param id
-     * @return
-     */
-    CategoryEntity getById(int id);
 }

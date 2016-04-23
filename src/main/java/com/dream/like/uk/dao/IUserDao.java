@@ -8,13 +8,6 @@ import com.dream.like.uk.domain.enums.RoleEnum;
  */
 public interface IUserDao {
     /**
-     * Returns the user, which corresponds to given id
-     * @param userId
-     * @return
-     */
-    UserEntity getById(int userId);
-
-    /**
      * Returns the user, which corresponds to given mail
      * @param mail
      * @return
