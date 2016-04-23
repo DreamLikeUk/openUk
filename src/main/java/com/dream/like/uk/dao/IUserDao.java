@@ -12,7 +12,7 @@ public interface IUserDao {
      * @param userId
      * @return
      */
-    UserEntity getUserById(int userId);
+    UserEntity getById(int userId);
 
     /**
      * Returns the user, which corresponds to given mail

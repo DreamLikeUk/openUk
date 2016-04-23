@@ -25,7 +25,7 @@ public class UserDao extends BaseDao<UserEntity> implements IUserDao {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public UserEntity getUserById(int userId) {
+    public UserEntity getById(int userId) {
         return get(userId);
     }
 
