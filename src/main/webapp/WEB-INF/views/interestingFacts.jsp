@@ -26,33 +26,25 @@
 <h6><em>Вітаємо,</em></h6>
 <h6><em>Твої очки</em></h6>
 <br/>
-       <div class = "panel panel-success">
+       <div class = "panel panel-info">
             <div class = "panel-heading">
-                <h3 class = "panel-title" text-align = "middle"><h2>Орфографія</h2></h3>
+                <h3 class = "panel-title" text-align = "middle"><h2>Цікавинки</h2></h3>
             </div>
             <div class = "panel-body">
                 
                 
                 
                     <fieldset>
-                    <div class = "panel panel-info">
+                    <div class = "panel panel-warning">
                         <div class = "panel-heading">
-                            <h2 class = "panel-title">1. Тут буде питання</h2>
+                            <h2 class = "panel-title">1. Тут буде назва цікавинки</h2>
                         </div>
                         <br/>
                         <div class = "panel-body">
                             <label> </label>
                             
                             <form role="form">
-                                <label class="radio-inline">
-                                    <input type="radio" name="optradio">a) відповідь а
-                                        </label><br/>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optradio">б)відповідь б
-                                        </label><br/>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optradio">в) відповідб в
-                                        </label>
+                               бла-бла-бла
                             </form>
                         </div>
                     </div>
@@ -60,14 +52,10 @@
                     
                 
                 <br/>
-      кожен блок містить окреме питання
-      <br/><button type="button" class="btn btn-primary">Перевірити</button>
+      кожен блок містить окрему цікавинку
+     
 
             </div>
               </div>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     </body>
 </html>

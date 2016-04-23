@@ -33,11 +33,11 @@
     <h3><label align="middle" style="font-family:verdana;">Вітаємо на порталі OpenUk<br/>
     Для вдосконалення своїх знань, будь ласка, оберіть категорію</label></h3>
     <div class="list-group" width="80" height="200" align="middle">
-    <a href="#" class="list-group-item active">Орфографія</a>
-    <a href="#" class="list-group-item">Фразеологія</a>
-    <a href="#" class="list-group-item">Лексика</a>
-    <a href="#" class="list-group-item">Редагування</a>
-    <a href="#" class="list-group-item">Цікавинки</a>
+    <a href="orthography.jsp" class="list-group-item active">Орфографія</a>
+    <a href="phraseology.jsp" class="list-group-item">Фразеологія</a>
+    <a href="vocabulary.jsp" class="list-group-item">Лексика</a>
+    <a href="editing.jsp" class="list-group-item">Редагування</a>
+    <a href="interestingFacts.jsp" class="list-group-item">Цікавинки</a>
     </div>
 
 </body>

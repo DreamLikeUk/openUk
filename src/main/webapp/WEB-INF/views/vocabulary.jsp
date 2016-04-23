@@ -26,16 +26,16 @@
 <h6><em>Вітаємо,</em></h6>
 <h6><em>Твої очки</em></h6>
 <br/>
-       <div class = "panel panel-success">
+       <div class = "panel panel-primary">
             <div class = "panel-heading">
-                <h3 class = "panel-title" text-align = "middle"><h2>Орфографія</h2></h3>
+                <h3 class = "panel-title" text-align = "middle"><h2>Лексика</h2></h3>
             </div>
             <div class = "panel-body">
                 
                 
                 
                     <fieldset>
-                    <div class = "panel panel-info">
+                    <div class = "panel panel-default">
                         <div class = "panel-heading">
                             <h2 class = "panel-title">1. Тут буде питання</h2>
                         </div>
@@ -65,9 +65,5 @@
 
             </div>
               </div>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     </body>
 </html>

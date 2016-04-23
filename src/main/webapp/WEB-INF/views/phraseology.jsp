@@ -22,20 +22,22 @@
            <li role="presentation"><a href="user_home.html">Кабінет користувача</a></li>
        </ul>
 
-<br/>
-<h6><em>Вітаємо,</em></h6>
-<h6><em>Твої очки</em></h6>
-<br/>
-       <div class = "panel panel-success">
+       
+       <br/>
+       <h6><em>Вітаємо,</em></h6>
+        <h6><em>Твої очки</em></h6>
+       <br/>
+       
+       <div class = "panel panel-warning">
             <div class = "panel-heading">
-                <h3 class = "panel-title" text-align = "middle"><h2>Орфографія</h2></h3>
+                <h3 class = "panel-title" text-align = "middle"><h2>Фразеологія</h2></h3>
             </div>
             <div class = "panel-body">
                 
                 
                 
                     <fieldset>
-                    <div class = "panel panel-info">
+                    <div class = "panel panel-success">
                         <div class = "panel-heading">
                             <h2 class = "panel-title">1. Тут буде питання</h2>
                         </div>
@@ -65,9 +67,5 @@
 
             </div>
               </div>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     </body>
 </html>
