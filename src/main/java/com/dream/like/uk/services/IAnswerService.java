@@ -2,6 +2,7 @@ package com.dream.like.uk.services;
 
 import com.dream.like.uk.domain.entities.AnswerEntity;
 import com.dream.like.uk.domain.entities.BadgeEntity;
+import org.hibernate.criterion.Criterion;
 
 import java.util.List;
 
@@ -18,4 +19,7 @@ public interface IAnswerService {
 
     boolean removeAnswer(int id);
 
-}
+    }
+
+
+

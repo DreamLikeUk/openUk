@@ -1,8 +1,11 @@
 package com.dream.like.uk.services.impl;
 
 import com.dream.like.uk.dao.IAnswersDao;
+import com.dream.like.uk.dao.IDao;
 import com.dream.like.uk.domain.entities.AnswerEntity;
 import com.dream.like.uk.services.IAnswerService;
+import com.dream.like.uk.services.IDaoService;
+import org.hibernate.criterion.Criterion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,7 +18,7 @@ import java.util.List;
  */
 
 @Service
-public class AnswerServiceImpl implements IAnswerService {
+public class AnswerServiceImpl extends IDaoServiceImpl implements IAnswerService {
 
     @Autowired
     private IAnswersDao answerDao;
@@ -27,14 +30,20 @@ public class AnswerServiceImpl implements IAnswerService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public List<AnswerEntity> getAllAnswers() {
-        return null;
+        return answerDao.get();
     }
+
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public int addAnswer(AnswerEntity anAnswer) {
-       return -1;
+        if (anAnswer != null) {
+            return answerDao.save(anAnswer);
+        } else {
+            return -1;
+        }
     }
 
     @Override
@@ -42,4 +51,6 @@ public class AnswerServiceImpl implements IAnswerService {
     public boolean removeAnswer(int id) {
          return false;
     }
+
+
 }

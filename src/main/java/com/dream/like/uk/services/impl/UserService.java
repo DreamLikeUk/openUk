@@ -31,18 +31,22 @@ public class UserService implements IUserService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public UserEntity updateUser(UserEntity user) {
-        return null;
+        if (user != null) {
+            return userDao.update(user);
+        } else {
+            return null;
+        }
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean deleteUser(int userId) {
-        return false;
+        return userDao.delete(userId);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public RoleEnum getUserRole(UserEntity userEntity) {
+        public RoleEnum getUserRole(UserEntity userEntity) {
         return null;
     }
 }

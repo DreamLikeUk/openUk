@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by natalia on 4/23/16.
  */
-public interface IRankService {
+public interface IRankService extends  IDaoService {
 
     RankEntity getRankById( int id);
 
