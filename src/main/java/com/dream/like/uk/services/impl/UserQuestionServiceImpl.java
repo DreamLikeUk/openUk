@@ -2,6 +2,8 @@ package com.dream.like.uk.services.impl;
 
 import com.dream.like.uk.dao.IUserQuestionDao;
 import com.dream.like.uk.dao.impl.UserQuestionDao;
+import com.dream.like.uk.domain.entities.QuestionEntity;
+import com.dream.like.uk.domain.entities.UserEntity;
 import com.dream.like.uk.domain.entities.UserQuestionEntity;
 import com.dream.like.uk.services.IUserQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +52,17 @@ public class UserQuestionServiceImpl implements IUserQuestionService {
         }
         return userPoints;
     }
+
+    public UserQuestionEntity createNewUserToQuest(UserEntity user, QuestionEntity question) {
+        if (user != null && question != null) {
+            UserQuestionEntity theUserQuestion = new UserQuestionEntity();
+            theUserQuestion.setUser(user);
+            theUserQuestion.setQuestion(question);
+            return theUserQuestion;
+        } else {
+            return null;
+        }
+    }
+
 
 }

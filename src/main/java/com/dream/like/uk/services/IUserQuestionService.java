@@ -1,5 +1,7 @@
 package com.dream.like.uk.services;
 
+import com.dream.like.uk.domain.entities.QuestionEntity;
+import com.dream.like.uk.domain.entities.UserEntity;
 import com.dream.like.uk.domain.entities.UserQuestionEntity;
 
 import java.util.List;
@@ -19,4 +21,6 @@ public interface IUserQuestionService {
     boolean delete(int id);
 
     int calculateUserPoints();
+
+    UserQuestionEntity createNewUserToQuest(UserEntity user, QuestionEntity question);
 }
