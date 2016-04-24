@@ -10,7 +10,7 @@ import java.util.List;
 public interface IUserQuestionService {
 
 
-    List<UserQuestionEntity> get();
+    List<UserQuestionEntity> getAllUserQuestions();
 
     UserQuestionEntity get(Integer id);
 
@@ -18,4 +18,5 @@ public interface IUserQuestionService {
     UserQuestionEntity update(UserQuestionEntity answerEntity);
     boolean delete(int id);
 
+    int calculateUserPoints();
 }

@@ -3,6 +3,7 @@ package com.dream.like.uk.services.impl;
 import com.dream.like.uk.dao.IUserQuestionDao;
 import com.dream.like.uk.dao.impl.UserQuestionDao;
 import com.dream.like.uk.domain.entities.UserQuestionEntity;
+import com.dream.like.uk.services.IUserQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -11,15 +12,15 @@ import java.util.List;
 /**
  * Created by natalia on 4/24/16.
  */
-public class UserQuestionServiceImpl implements IUserQuestionDao {
+public class UserQuestionServiceImpl implements IUserQuestionService {
 
     @Autowired
     private IUserQuestionDao userQuestionDao;
 
-    public List<UserQuestionEntity> get() {
+    public List<UserQuestionEntity> getAllUserQuestions() {
          List<UserQuestionEntity> allQuestions = new ArrayList<UserQuestionEntity>();
-          for (UserQuestionEntity userAnsw : userQuestionDao.get()) {
-               allQuestions.add(userAnsw);
+          for (UserQuestionEntity userQuest : userQuestionDao.get()) {
+               allQuestions.add(userQuest);
           }
         return allQuestions;
     }
@@ -41,5 +42,13 @@ public class UserQuestionServiceImpl implements IUserQuestionDao {
     }
 
 
+    public int calculateUserPoints() {
+        int userPoints = 0;
+        ArrayList<UserQuestionEntity> questList = (ArrayList<UserQuestionEntity>) get();
+        for (int i = 0; i < questList.size(); i++) {
+            userPoints += questList.get(i).getQuestion().getPoints();
+        }
+        return userPoints;
+    }
 
 }
