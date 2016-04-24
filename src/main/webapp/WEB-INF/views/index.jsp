@@ -26,6 +26,7 @@
         var signup_template = getTemplate("/resources/template/signUp.ejs");
         var question_template = getTemplate("/resources/template/question.ejs");
         var answer_template = getTemplate("/resources/template/answer.ejs");
+        var admin_template = getTemplate("/resources/template/admin.ejs");
         var messages = {
           user:{
               username: '<spring:message code="user.username"/>',
@@ -160,9 +161,20 @@
         }
 
         function getAdminPage(){
-            $(".container.main").html("Список категорій");
+            $(".container.main").html(admin_template.render({}));
+            $.ajax({
+                type: "GET",
+                url: "/category/",
+                dataType : 'json',
+                timeout : 100000,
+                success : function(data) {
+                    data.result.forEach(function(category){
+                        $(".add").append('<tr> <td>'+category.name+'</td> <td>'+category.description+'</td> </tr> ')
+                    });
+                }
+            });
+        };
 
-        }
 
 
     </script>
