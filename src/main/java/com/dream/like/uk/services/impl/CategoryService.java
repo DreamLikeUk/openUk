@@ -49,6 +49,7 @@ public class CategoryService implements ICategoryService {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("name",categoryEntity.getName());
         map.put("description", categoryEntity.getDescription());
+        map.put("link", categoryEntity.getLink());
         return map;
     }
 

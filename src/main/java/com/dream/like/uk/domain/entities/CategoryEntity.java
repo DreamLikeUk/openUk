@@ -30,6 +30,17 @@ public class CategoryEntity {
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<QuestionEntity> questions;
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    @Column(name = "image_link")
+    private String link;
+
     public int getId() {
         return id;
     }
