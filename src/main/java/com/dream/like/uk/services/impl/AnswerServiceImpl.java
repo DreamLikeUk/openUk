@@ -15,7 +15,7 @@ import java.util.*;
  */
 
 @Service
-public class AnswerServiceImpl extends DaoServiceImpl implements IAnswerService {
+public class AnswerServiceImpl implements IAnswerService {
 
     @Autowired
     private IAnswersDao answerDao;

@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by natalia on 4/23/16.
  */
-public interface IBadgeService extends IDaoService{
+public interface IBadgeService {
 
     BadgeEntity getById(int id);
 

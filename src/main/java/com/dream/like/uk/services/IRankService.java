@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by natalia on 4/23/16.
  */
-public interface IRankService extends  IDaoService {
+public interface IRankService {
 
     RankEntity getRankById( int id);
 

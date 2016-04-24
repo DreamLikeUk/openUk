@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by natalia on 4/23/16.
  */
-public class BadgeServiceImpl extends DaoServiceImpl implements IBadgeService {
+public class BadgeServiceImpl implements IBadgeService {
 
     @Autowired
     private IBadgeDao badgeDao;
@@ -54,11 +54,7 @@ public class BadgeServiceImpl extends DaoServiceImpl implements IBadgeService {
         return badgeDao.delete(id);
     }
 
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public <T> Number count(Class<T> currentClass, Criterion... eq) {
-        return null;
-    }
+
 
     private Map<String, Object> convert(BadgeEntity badgeEntity){
         Map<String, Object> map = new HashMap<String, Object>();

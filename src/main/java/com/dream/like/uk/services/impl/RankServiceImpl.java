@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by natalia on 4/23/16.
  */
-public class RankServiceImpl extends DaoServiceImpl implements IRankService {
+public class RankServiceImpl  implements IRankService {
 
     @Autowired
     private IRankDao rankDao;
@@ -57,10 +57,7 @@ public class RankServiceImpl extends DaoServiceImpl implements IRankService {
         return  rankDao.delete(id);
     }
 
-    @Override
-    public <T> Number count(Class<T> currentClass, Criterion... eq) {
-        return null;
-    }
+
 
     private Map<String, Object> convert(RankEntity rankEntity){
         Map<String, Object> map = new HashMap<String, Object>();

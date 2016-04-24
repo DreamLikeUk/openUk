@@ -20,7 +20,7 @@ import java.util.Map;
  */
 
 @Service
-public class QuestionServiceImpl extends DaoServiceImpl implements IQuestionService{
+public class QuestionServiceImpl  implements IQuestionService{
 
     @Autowired
     private IQuestionDao questionDao;
@@ -59,10 +59,7 @@ public class QuestionServiceImpl extends DaoServiceImpl implements IQuestionServ
         return questionDao.delete(id);
     }
 
-    @Override
-    public <T> Number count(Class<T> currentClass, Criterion... eq) {
-        return null;
-    }
+
 
     private Map<String, Object> convert(QuestionEntity questionEntity){
         Map<String, Object> map = new HashMap<String, Object>();
