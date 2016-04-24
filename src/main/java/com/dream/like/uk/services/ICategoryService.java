@@ -14,6 +14,12 @@ public interface ICategoryService {
 
 
      CategoryEntity getById(int id);
+
      List<CategoryEntity> getAllCategories();
+
+    int saveCaregory(CategoryEntity aCategory);
+
+    boolean removeCategory();
+
 
     }
