@@ -1,5 +1,6 @@
 package com.dream.like.uk.dao;
 
+import com.dream.like.uk.dao.impl.QuestionDao;
 import com.dream.like.uk.domain.entities.QuestionEntity;
 
 import java.util.List;

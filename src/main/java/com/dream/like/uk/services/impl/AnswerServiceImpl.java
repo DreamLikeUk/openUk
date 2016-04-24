@@ -3,6 +3,7 @@ package com.dream.like.uk.services.impl;
 import com.dream.like.uk.dao.IAnswersDao;
 import com.dream.like.uk.domain.entities.AnswerEntity;
 import com.dream.like.uk.services.IAnswerService;
+import com.dream.like.uk.services.IQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -20,6 +21,8 @@ public class AnswerServiceImpl implements IAnswerService {
     @Autowired
     private IAnswersDao answerDao;
 
+    @Autowired
+    private IQuestionService questionService;
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public AnswerEntity getById(int id) {
@@ -53,6 +56,16 @@ public class AnswerServiceImpl implements IAnswerService {
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean removeAnswer(int id) {
          return false;
+    }
+
+    @Override
+    public List<Map<String, Object>> getAnswersByQuestion(int id) {
+        Set<AnswerEntity> answerEntities = questionService.getById(id).getAnswers();
+        List<Map<String, Object>> answers = new ArrayList<Map<String, Object>>();
+        for (AnswerEntity answ : answerDao.get()) {
+            answers.add(convert(answ));
+        }
+        return answers;
     }
 
     private Map<String, Object> convert(AnswerEntity answerEntity){

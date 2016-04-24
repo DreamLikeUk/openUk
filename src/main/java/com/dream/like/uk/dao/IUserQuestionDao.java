@@ -1,6 +1,7 @@
 package com.dream.like.uk.dao;
 
 
+import com.dream.like.uk.domain.entities.QuestionEntity;
 import com.dream.like.uk.domain.entities.UserQuestionEntity;
 
 import java.util.List;
@@ -29,4 +30,5 @@ public interface IUserQuestionDao {
      */
     UserQuestionEntity update(UserQuestionEntity answerEntity);
     boolean delete(int id);
+    List<QuestionEntity> getQuestionsByUser(int userId);
 }

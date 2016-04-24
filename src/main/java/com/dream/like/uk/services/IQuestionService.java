@@ -1,6 +1,8 @@
 package com.dream.like.uk.services;
 
+import com.dream.like.uk.domain.entities.CategoryEntity;
 import com.dream.like.uk.domain.entities.QuestionEntity;
+import com.dream.like.uk.domain.entities.UserEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -16,4 +18,8 @@ public interface IQuestionService {
     int addQuestion(QuestionEntity aQuestion);
 
     boolean removeQuestion(int id);
+
+    List<QuestionEntity> getQuestionsByUser(int userEntity);
+
+    List<Map<String,Object>> getQuestionsForUser(int userEntity, int category);
 }

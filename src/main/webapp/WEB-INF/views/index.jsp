@@ -66,12 +66,15 @@
                 timeout : 100000,
                 success : function(data) {
                     console.log("SUCCESS: ", data.result);
-                    var html = '<div class="row stylish-panel">';
-                    data.result.forEach(function(category){
-                        html+= category_template.render({category: category, messages: messages});
-                    });
-                    html+=' </div>';
+                    var html = '<div class="row stylish-panel"> </div>';
                     $(".container.main").html(html);
+                    data.result.forEach(function(category){
+                        var temp = $(category_template.render({category: category, messages: messages}));
+                        temp.find('.btn.btn-primary').click(function(){
+                            console.log(category.name);
+                        });
+                        $('.row.stylish-panel').append(temp);
+                    });
                 },
                 error : function(e) {
                     console.log("ERROR: ", e);
@@ -103,7 +106,6 @@
                 }
 
             });
-        //    $(".container.main").html(user_template.render({user:user, messages: messages}));
         }
         </security:authorize>
         function getTemplate(address){

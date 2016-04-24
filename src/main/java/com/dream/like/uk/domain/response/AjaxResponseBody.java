@@ -1,6 +1,7 @@
 package com.dream.like.uk.domain.response;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Stacy on 4/24/16.

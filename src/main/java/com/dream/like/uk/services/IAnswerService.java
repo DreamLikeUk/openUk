@@ -20,6 +20,8 @@ public interface IAnswerService {
 
     boolean removeAnswer(int id);
 
+
+    List<Map<String,Object>> getAnswersByQuestion(int id);
     }
 
 
