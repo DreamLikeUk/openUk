@@ -25,6 +25,7 @@
         var category_template = getTemplate("/resources/template/category.ejs");
         var signup_template = getTemplate("/resources/template/signUp.ejs");
         var question_template = getTemplate("/resources/template/question.ejs");
+        var answer_template = getTemplate("/resources/template/answer.ejs");
         var messages = {
           user:{
               username: '<spring:message code="user.username"/>',
@@ -102,7 +103,9 @@
                 timeout: 100000,
                 success: function (data) {
                     var temp = '';
+                    $(".container.main").html(temp);
                     data.result.forEach(function(question) {
+                       var temp1 = $(question_template.render({question: question}));
                         $.ajax({
                             type: "GET",
                             url: "/answer/",
@@ -112,12 +115,14 @@
                             dataType: 'json',
                             timeout: 100000,
                             success: function (data) {
-                                console.log(data);
+                                data.result.forEach(function(answer){
+                                    temp1.find(".que").append(answer_template.render({answer:answer}));
+                                });
+
                             }
                         });
-                        temp+=question_template.render({question: question});
+                        $(".container.main").append(temp1);
                     });
-                    $(".container.main").html(temp);
                 }
             });
         }
