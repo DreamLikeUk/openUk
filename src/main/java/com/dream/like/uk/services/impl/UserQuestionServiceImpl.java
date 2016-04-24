@@ -7,6 +7,9 @@ import com.dream.like.uk.domain.entities.UserEntity;
 import com.dream.like.uk.domain.entities.UserQuestionEntity;
 import com.dream.like.uk.services.IUserQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +17,8 @@ import java.util.List;
 /**
  * Created by natalia on 4/24/16.
  */
+@Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class UserQuestionServiceImpl implements IUserQuestionService {
 
     @Autowired

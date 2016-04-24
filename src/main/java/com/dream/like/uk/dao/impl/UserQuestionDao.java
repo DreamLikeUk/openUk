@@ -7,6 +7,8 @@ import com.google.common.collect.Lists;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
  * Created by Stacy on 4/24/16.
  */
 @Repository
+@Transactional(propagation = Propagation.REQUIRED)
 public class UserQuestionDao extends BaseDao<UserQuestionEntity> implements IUserQuestionDao {
     @Override
     protected Class<UserQuestionEntity> getCurrentClass() {

@@ -16,6 +16,7 @@ import java.util.*;
  */
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class AnswerServiceImpl implements IAnswerService {
 
     @Autowired
@@ -62,7 +63,7 @@ public class AnswerServiceImpl implements IAnswerService {
     public List<Map<String, Object>> getAnswersByQuestion(int id) {
         Set<AnswerEntity> answerEntities = questionService.getById(id).getAnswers();
         List<Map<String, Object>> answers = new ArrayList<Map<String, Object>>();
-        for (AnswerEntity answ : answerDao.get()) {
+        for (AnswerEntity answ : answerEntities) {
             answers.add(convert(answ));
         }
         return answers;

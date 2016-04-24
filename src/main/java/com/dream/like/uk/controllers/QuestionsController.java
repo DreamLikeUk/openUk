@@ -22,7 +22,7 @@ public class QuestionsController {
 @Autowired
 private IQuestionService questionService;
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public AjaxResponseBody<Map<String,Object>> getQuestionsForUser(@RequestParam("user") int id, @RequestParam("category") int category){
         AjaxResponseBody<Map<String,Object>> responseBody = new AjaxResponseBody<Map<String,Object>>();
         responseBody.setResult(questionService.getQuestionsForUser(id,category));

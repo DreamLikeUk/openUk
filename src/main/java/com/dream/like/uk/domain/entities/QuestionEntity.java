@@ -25,10 +25,6 @@ public class QuestionEntity {
     @Column(name = "points")
     private int points;
 
-    @NotBlank
-    @Column(name = "image_link")
-    private String link;
-
     @ManyToOne
     @JoinColumn(name = "id_category", referencedColumnName = "id")
     private CategoryEntity category;
@@ -61,9 +57,6 @@ public class QuestionEntity {
         this.points = points;
     }
 
-    public String getLink() {
-        return link;
-    }
 
     public Set<AnswerEntity> getAnswers() {
         return answers;
@@ -71,10 +64,6 @@ public class QuestionEntity {
 
     public void setAnswers(Set<AnswerEntity> answers) {
         this.answers = answers;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
     }
 
     public CategoryEntity getCategory() {
@@ -94,7 +83,6 @@ public class QuestionEntity {
 
         if (id != that.id) return false;
         if (points != that.points) return false;
-        if (!link.equals(that.link)) return false;
         if (!text.equals(that.text)) return false;
 
         return true;
@@ -105,7 +93,6 @@ public class QuestionEntity {
         int result = id;
         result = 31 * result + text.hashCode();
         result = 31 * result + points;
-        result = 31 * result + link.hashCode();
         return result;
     }
 
@@ -115,7 +102,6 @@ public class QuestionEntity {
     public QuestionEntity(String text, int points, String link, CategoryEntity category) {
         this.text = text;
         this.points = points;
-        this.link = link;
         this.category = category;
     }
 }

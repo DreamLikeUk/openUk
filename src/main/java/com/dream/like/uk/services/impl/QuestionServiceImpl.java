@@ -20,6 +20,7 @@ import java.util.*;
  */
 
 @Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class QuestionServiceImpl  implements IQuestionService{
 
     @Autowired

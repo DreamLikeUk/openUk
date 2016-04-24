@@ -6,6 +6,7 @@ import com.dream.like.uk.domain.entities.CategoryEntity;
 import com.dream.like.uk.services.IBadgeService;
 import org.hibernate.criterion.Criterion;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,8 @@ import java.util.Map;
 /**
  * Created by natalia on 4/23/16.
  */
+@Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class BadgeServiceImpl implements IBadgeService {
 
     @Autowired

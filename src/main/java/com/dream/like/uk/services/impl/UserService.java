@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by Stacy on 4/7/16.
  */
 @Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class UserService implements IUserService {
     @Autowired
     private IUserDao userDao;

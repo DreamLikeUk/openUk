@@ -24,6 +24,7 @@
         var user_template = getTemplate("/resources/template/user.ejs");
         var category_template = getTemplate("/resources/template/category.ejs");
         var signup_template = getTemplate("/resources/template/signUp.ejs");
+        var question_template = getTemplate("/resources/template/question.ejs");
         var messages = {
           user:{
               username: '<spring:message code="user.username"/>',
@@ -51,7 +52,7 @@
                     dataType: 'json',
                     async: true,
                     success : function(data) {
-                        alert("ok");
+                        $(".container.main").html('Ви успішно заєструвались! Тепер натисніть "Увійти" ');
                     }
                 });
             });
@@ -72,6 +73,8 @@
                         var temp = $(category_template.render({category: category, messages: messages}));
                         temp.find('.btn.btn-primary').click(function(){
                             console.log(category.name);
+                            getCategory(category);
+
                         });
                         $('.row.stylish-panel').append(temp);
                     });
@@ -82,6 +85,43 @@
 
             });
         }
+        <security:authorize access="isAuthenticated()">
+        function getCategory(category) {
+            var html = '<div class="row stylish-panel"> </div>';
+            $(".lead.text-center").html('Ви обрали "'+ category.name+'"');
+            $(".container.main").html(html);
+            $('.row.stylish-panel').append(category_template.render({category: category, messages: messages}));
+            $.ajax({
+                type: "GET",
+                url: "/question/",
+                data:{
+                    user: '<security:authentication property="principal.id"/>',
+                    category: category.id
+                },
+                dataType: 'json',
+                timeout: 100000,
+                success: function (data) {
+                    var temp = '';
+                    data.result.forEach(function(question) {
+                        $.ajax({
+                            type: "GET",
+                            url: "/answer/",
+                            data:{
+                                question: question.id
+                            },
+                            dataType: 'json',
+                            timeout: 100000,
+                            success: function (data) {
+                                console.log(data);
+                            }
+                        });
+                        temp+=question_template.render({question: question});
+                    });
+                    $(".container.main").html(temp);
+                }
+            });
+        }
+        </security:authorize>
 
         function changeContainer(){
             $(".container.main").html("here");
@@ -112,6 +152,9 @@
             return new EJS({url: address});
         }
 
+        function getAdminPage(){
+            $(".container.main").html("Тут працює адмін");
+        }
 
 
     </script>
@@ -145,6 +188,9 @@
                     </security:authorize>
                     <li class="hvr-bounce-to-bottom "><a href="#" onclick="changeContainer();"><spring:message code="main.about"/></a></li>
                     <security:authorize access="isAuthenticated()">
+                        <security:authorize access="hasAuthority('CAN_EDIT')">
+                            <li class="hvr-bounce-to-bottom "><a href="#" onclick="getAdminPage();" ><spring:message code="main.admin"/></a></li>
+                        </security:authorize>
                         <li class="hvr-bounce-to-bottom "><a href="#" onclick="getUserPage();" ><spring:message code="main.user"/></a></li>
                     <li class="hvr-bounce-to-bottom "><a href="/logout"><spring:message code="main.logout"/></a></li>
                     </security:authorize>

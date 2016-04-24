@@ -15,6 +15,7 @@ import java.util.*;
  * Created by natalia on 4/23/16.
  */
 @Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class CategoryService implements ICategoryService {
 
     @Autowired
@@ -47,6 +48,7 @@ public class CategoryService implements ICategoryService {
 
     private Map<String, Object> convert(CategoryEntity categoryEntity){
         Map<String, Object> map = new HashMap<String, Object>();
+        map.put("id",categoryEntity.getId());
         map.put("name",categoryEntity.getName());
         map.put("description", categoryEntity.getDescription());
         map.put("link", categoryEntity.getLink());

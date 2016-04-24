@@ -20,6 +20,7 @@ import java.util.*;
  * Created by Stacy on 4/8/16.
  */
 @Repository
+@Transactional(propagation = Propagation.REQUIRED)
 public class UserDao extends BaseDao<UserEntity> implements IUserDao {
 
 
