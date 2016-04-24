@@ -158,7 +158,8 @@
         }
 
         function getAdminPage(){
-            $(".container.main").html("Тут працює адмін");
+            $(".container.main").html("Список категорій");
+
         }
 
 
