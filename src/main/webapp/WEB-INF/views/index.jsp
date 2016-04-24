@@ -138,6 +138,7 @@
         }
         <security:authorize access="isAuthenticated()">
         function getUserPage(){
+            $(".lead.text-center").html("");
             $.ajax({
                 type: "GET",
                 url: "/user/"+'<security:authentication property="principal.id"/>',

@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Stacy on 4/23/16.
@@ -22,10 +24,10 @@ public class UsersController {
     private IUserService userService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public AjaxResponseBody<UserEntity> getUser(@PathVariable("id") int id){
-        AjaxResponseBody<UserEntity> responseBody = new AjaxResponseBody<UserEntity>();
-           List<UserEntity> cat = new ArrayList<UserEntity>();
-         cat.add(userService.getUserById(id));
+    public AjaxResponseBody<Map<String,Object>> getUser(@PathVariable("id") int id){
+        AjaxResponseBody<Map<String,Object>> responseBody = new AjaxResponseBody<Map<String,Object>>();
+           List<Map<String,Object>> cat = new ArrayList<Map<String,Object>>();
+         cat.add(userService.getUser(id));
         responseBody.setResult(cat);
         responseBody.setCode("204");
         return responseBody;
