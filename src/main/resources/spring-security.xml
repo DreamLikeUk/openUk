@@ -7,12 +7,12 @@ http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-4.0.xsd">
     <http auto-config="true" >
-        <intercept-url pattern="/user**" access="hasAuthority('CAN_READ')" />
         <intercept-url pattern="/admin**" access="hasAuthority('CAN_EDIT')" />
         <form-login  login-page="/login"
                      username-parameter="ssoId"
                      password-parameter="password"
                      authentication-failure-url="/Access_Denied" />
+        <csrf disabled="true"/>
     </http>
 
 

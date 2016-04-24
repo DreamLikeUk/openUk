@@ -1,13 +1,16 @@
 package com.dream.like.uk.controllers;
 
+import com.dream.like.uk.domain.User;
 import com.dream.like.uk.services.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -65,6 +68,10 @@ public class IndexController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage() {
 		return "login";
+	}
+	@RequestMapping(value = "/signUp", method = RequestMethod.GET)
+	public String signup() {
+		return "signup";
 	}
 
 }

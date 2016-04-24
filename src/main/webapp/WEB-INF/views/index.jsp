@@ -9,6 +9,7 @@
 <head>
     <title>openUk</title>
     <link href="/resources/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="/resources/css/signUp.css" type="text/css" rel="stylesheet" media="all">
     <link href="/resources/bootstrap-3.3.2-dist/css/bootstrap.css.map" type="text/css" rel="stylesheet" media="all">
     <link href="/resources/css/style.css" type="text/css" rel="stylesheet" media="all">
     <link href="/resources/css/index.css" type="text/css" rel="stylesheet" media="all">
@@ -17,10 +18,13 @@
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <script src="/resources/js/jquery-2.1.3.min.js"></script>
     <script src="/resources/js/ejs.min.js"> </script>
+    <script src="/resources/js/md5.js"></script>
     <script type="text/javascript">
+
         getMain();
         var user_template = getTemplate("/resources/template/user.ejs");
         var category_template = getTemplate("/resources/template/category.ejs");
+        var signup_template = getTemplate("/resources/template/signUp.ejs");
         var messages = {
           user:{
               username: '<spring:message code="user.username"/>',
@@ -30,6 +34,29 @@
                 button: '<spring:message code="category.button"/>'
             }
         };
+        function signUp(){
+            $(".container.main").html(signup_template.render({}));
+            $('.but.sub').click(function(e){
+                var user ={
+                    'name': $("#Sname").val(),
+                    'email': $("#Semail").val(),
+                    'password': md5($("#Spass").val())
+                }
+                console.log(user);
+                $.ajax({
+                    type: "PUT",
+                    url: "/user/",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify(user),
+                    dataType: 'json',
+                    async: true,
+                    success : function(data) {
+                        alert("ok");
+                    }
+                });
+            });
+        }
+
         function getMain(){
             $.ajax({
                 type: "GET",
@@ -111,7 +138,7 @@
                     <li class="hvr-bounce-to-bottom active"><a href="/"><spring:message code="main.home"/></a></li>
                     <security:authorize access="isAnonymous()">
                     <li class="hvr-bounce-to-bottom "><a href="/login"><spring:message code="main.signin"/></a></li>
-                    <li class="hvr-bounce-to-bottom "><a href="#"><spring:message code="main.signup"/></a></li>
+                    <li class="hvr-bounce-to-bottom "><a href="#" onclick="signUp();"><spring:message code="main.signup"/></a></li>
                     </security:authorize>
                     <li class="hvr-bounce-to-bottom "><a href="#" onclick="changeContainer();"><spring:message code="main.about"/></a></li>
                     <security:authorize access="isAuthenticated()">

@@ -1,5 +1,6 @@
 package com.dream.like.uk.services;
 
+import com.dream.like.uk.domain.User;
 import com.dream.like.uk.domain.entities.AnswerEntity;
 import com.dream.like.uk.domain.entities.UserEntity;
 import com.dream.like.uk.domain.enums.RoleEnum;
@@ -43,5 +44,7 @@ public interface IUserService {
      * @return
      */
     RoleEnum getUserRole(UserEntity userEntity);
+
+    boolean saveUser(User user);
 
 }

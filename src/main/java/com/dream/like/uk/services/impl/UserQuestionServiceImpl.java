@@ -44,7 +44,7 @@ public class UserQuestionServiceImpl implements IUserQuestionService {
 
     public int calculateUserPoints() {
         int userPoints = 0;
-        ArrayList<UserQuestionEntity> questList = (ArrayList<UserQuestionEntity>) getAllUserQuestions();
+        List<UserQuestionEntity> questList =  getAllUserQuestions();
         for (int i = 0; i < questList.size(); i++) {
             userPoints += questList.get(i).getQuestion().getPoints();
         }
