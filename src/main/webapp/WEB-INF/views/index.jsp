@@ -38,11 +38,12 @@
                 timeout : 100000,
                 success : function(data) {
                     console.log("SUCCESS: ", data.result);
-                    var html = '';
+                    var html = '<div class="row stylish-panel">';
                     data.result.forEach(function(category){
                         html+= category_template.render({category: category, messages: messages});
                     });
-                    $(".row.stylish-panel").html(html);
+                    html+=' </div>';
+                    $(".container.main").html(html);
                 },
                 error : function(e) {
                     console.log("ERROR: ", e);
@@ -56,10 +57,27 @@
             $(".text-center").html("text");
             $(".lead.text-center").html("desc");
         }
+        <security:authorize access="isAuthenticated()">
         function getUserPage(){
-            $("#user").show();
-        }
+            $.ajax({
+                type: "GET",
+                url: "/user/"+'<security:authentication property="principal.id"/>',
+                dataType : 'json',
+                timeout : 100000,
+                success : function(data) {
+                    console.log("SUCCESS: ", data.result);
+                    data.result.forEach(function(user){
+                        $(".container.main").html(user_template.render({user:user, messages: messages}));
+                    });
+                },
+                error : function(e) {
+                    console.log("ERROR: ", e);
+                }
 
+            });
+        //    $(".container.main").html(user_template.render({user:user, messages: messages}));
+        }
+        </security:authorize>
         function getTemplate(address){
             return new EJS({url: address});
         }
@@ -97,7 +115,7 @@
                     </security:authorize>
                     <li class="hvr-bounce-to-bottom "><a href="#" onclick="changeContainer();"><spring:message code="main.about"/></a></li>
                     <security:authorize access="isAuthenticated()">
-                        <li class="hvr-bounce-to-bottom "><a href="#" ><spring:message code="main.user"/></a></li>
+                        <li class="hvr-bounce-to-bottom "><a href="#" onclick="getUserPage();" ><spring:message code="main.user"/></a></li>
                     <li class="hvr-bounce-to-bottom "><a href="/logout"><spring:message code="main.logout"/></a></li>
                     </security:authorize>
                 </ul>
@@ -113,10 +131,6 @@
     </div>
     <p class="lead text-center"><spring:message code="main.message"/></p>
     <div class="container main">
-        <div class="row stylish-panel">
-            <!-- Test version would be moved to ejs files -->
-
-        </div>
     </div>
     </div>
     <security:authorize access="isAuthenticated()">

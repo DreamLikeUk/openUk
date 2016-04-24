@@ -33,8 +33,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         boolean enabled = true;
         if (!user.isActive())
             enabled = false;
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
+        UserSpecial usersp = new UserSpecial(user.getEmail(), user.getPassword(),
                 enabled, true, true, true, getGrantedAuthorities(user));
+        usersp.setId(user.getId());
+        return usersp;
     }
 
 
