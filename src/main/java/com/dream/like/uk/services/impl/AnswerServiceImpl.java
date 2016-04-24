@@ -40,7 +40,8 @@ public class AnswerServiceImpl extends IDaoServiceImpl implements IAnswerService
     @Transactional(propagation = Propagation.REQUIRED)
     public int addAnswer(AnswerEntity anAnswer) {
         if (anAnswer != null) {
-            return answerDao.save(anAnswer);
+             answerDao.update(anAnswer);
+            return 0;
         } else {
             return -1;
         }

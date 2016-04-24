@@ -33,7 +33,8 @@ public class BadgeServiceImpl extends IDaoServiceImpl implements IBadgeService {
     @Transactional(propagation = Propagation.REQUIRED)
     public int addBadge(BadgeEntity aBadge) {
         if (aBadge != null) {
-            return badgeDao.save(aBadge);
+             badgeDao.update(aBadge);
+            return 0;
         } else {
             return -1;
         }

@@ -38,7 +38,8 @@ public class QuestionServiceImpl extends IDaoServiceImpl implements IQuestionSer
     @Transactional(propagation = Propagation.REQUIRED)
     public int addQuestion(QuestionEntity aQuestion) {
         if (aQuestion != null) {
-            return questionDao.save(aQuestion);
+             questionDao.update(aQuestion);
+            return 0;
         } else {
             return -1;
         }

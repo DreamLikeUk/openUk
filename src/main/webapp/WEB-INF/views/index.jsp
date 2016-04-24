@@ -16,6 +16,57 @@
     <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
     <script src="/resources/js/jquery-2.1.3.min.js"></script>
+    <script src="/resources/js/ejs.min.js"> </script>
+    <script type="text/javascript">
+        getMain();
+        var user_template = getTemplate("/resources/template/user.ejs");
+        var category_template = getTemplate("/resources/template/category.ejs");
+        var messages = {
+          user:{
+              username: '<spring:message code="user.username"/>',
+              email: '<spring:message code="user.username"/>'
+          },
+            category:{
+                button: '<spring:message code="category.button"/>'
+            }
+        };
+        function getMain(){
+            $.ajax({
+                type: "GET",
+                url: "/category/",
+                dataType : 'json',
+                timeout : 100000,
+                success : function(data) {
+                    console.log("SUCCESS: ", data.result);
+                    var html = '';
+                    data.result.forEach(function(category){
+                        html+= category_template.render({category: category, messages: messages});
+                    });
+                    $(".row.stylish-panel").html(html);
+                },
+                error : function(e) {
+                    console.log("ERROR: ", e);
+                }
+
+            });
+        }
+
+        function changeContainer(){
+            $(".container.main").html("here");
+            $(".text-center").html("text");
+            $(".lead.text-center").html("desc");
+        }
+        function getUserPage(){
+            $("#user").show();
+        }
+
+        function getTemplate(address){
+            return new EJS({url: address});
+        }
+
+
+
+    </script>
 </head>
 <body>
 <!--header-->
@@ -40,8 +91,8 @@
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="hvr-bounce-to-bottom active"><a href="/"><spring:message code="main.home"/></a></li>
-                    <li class="hvr-bounce-to-bottom "><a href="/"><spring:message code="main.about"/></a></li>
-                    <li class="hvr-bounce-to-bottom "><a href="/"><spring:message code="main.user"/></a></li>
+                    <li class="hvr-bounce-to-bottom "><a href="#" onclick="changeContainer();"><spring:message code="main.about"/></a></li>
+                    <li class="hvr-bounce-to-bottom "><a href="" onclick="getUserPage();"><spring:message code="main.user"/></a></li>
                 </ul>
                 <div class="clearfix"> </div>
             </div>
@@ -54,27 +105,16 @@
         <h1 class="text-center"><spring:message code="main.title"/></h1>
     </div>
     <p class="lead text-center"><spring:message code="main.message"/></p>
-    <div class="container">
+    <div class="container main">
         <div class="row stylish-panel">
             <!-- Test version would be moved to ejs files -->
-            <div class="col-md-4">
-                <div>
-                    <img src="http://image.zn.ua/media/images/614xX/Jan2011/6150.jpg" alt="Texto Alternativo" class="img-circle img-thumbnail">
-                    <h2>Орфографія</h2>
-                    <p>Category description          </p>
-                    <a href="#" class="btn btn-primary" title="See more">Почати!</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div>
-                    <img src="http://ostriv.in.ua/images/publications/4/3889/1313477158.gif" alt="Texto Alternativo" class="img-circle img-thumbnail">
-                    <h2>Фразеологія</h2>
-                    <p>Category description          </p>
-                    <a href="#" class="btn btn-primary" title="See more">Почати!</a>
-                </div>
-            </div>
+
         </div>
     </div>
+    </div>
+    <security:authorize access="isAuthenticated()">
+    <jsp:include page="user_home.jsp"/>
+    </security:authorize>
         <!-- /container -->
 <script src="/resources/js/bootstrap.js"></script>
 </body>

@@ -36,7 +36,8 @@ public class RankServiceImpl extends IDaoServiceImpl implements IRankService {
     @Transactional(propagation = Propagation.REQUIRED)
     public int addRank(RankEntity aRank) {
         if (aRank != null) {
-            return rankDao.save(aRank);
+             rankDao.update(aRank);
+            return 0;
         } else {
             return -1;
         }

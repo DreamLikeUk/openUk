@@ -19,7 +19,7 @@ public class UserService implements IUserService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public UserEntity getUserById(int userId) {
-        return null;
+        return userDao.get(userId);
     }
 
     @Override

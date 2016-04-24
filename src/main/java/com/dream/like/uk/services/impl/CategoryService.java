@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.*;
+
 
 /**
  * Created by natalia on 4/23/16.
  */
 @Service
-public class CategoryServiceImpl implements ICategoryService {
+public class CategoryService implements ICategoryService {
 
     @Autowired
     private ICategoryDao categoryDao;
@@ -23,24 +23,33 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public CategoryEntity getById(int id) {
-        return categoryDao.get(id);
+       return categoryDao.get(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<CategoryEntity> getAllCategories() {
-       return null;
+    public List<Map<String,Object>> getAllCategories() {
+        List<Map<String, Object>> categories = new ArrayList<Map<String, Object>>();
+        for(CategoryEntity cat: categoryDao.get())
+        categories.add(convert(cat));
+       return categories;
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public int saveCategory(CategoryEntity aCategory) {
-        return -1;
+    public int saveCaregory(CategoryEntity aCategory) {
+        return 0;
     }
 
     @Override
     public boolean removeCategory(int id) {
         return false;
+    }
+
+    private Map<String, Object> convert(CategoryEntity categoryEntity){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("name",categoryEntity.getName());
+        map.put("description", categoryEntity.getDescription());
+        return map;
     }
 
 

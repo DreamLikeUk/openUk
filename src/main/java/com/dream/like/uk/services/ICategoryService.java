@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by natalia on 4/23/16.
@@ -15,7 +16,7 @@ public interface ICategoryService {
 
      CategoryEntity getById(int id);
 
-     List<CategoryEntity> getAllCategories();
+     List<Map<String,Object>>  getAllCategories();
 
     int saveCaregory(CategoryEntity aCategory);
 
