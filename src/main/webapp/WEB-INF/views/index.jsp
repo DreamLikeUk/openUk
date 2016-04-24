@@ -129,9 +129,11 @@
         </security:authorize>
 
         function changeContainer(){
-            $(".container.main").html("here");
-            $(".text-center").html("text");
-            $(".lead.text-center").html("desc");
+            $(".container.main").html('<div align = "right"><span class="glyphicon glyphicon-copyright-mark"></span><a href="https://www.facebook.com/stace.danilochkina"> Anastasia Danilochkina</a><br/>' +
+            '   <span class="glyphicon glyphicon-copyright-mark"></span><a href="https://www.facebook.com/natalia.kiselyk?pnref=story"> Natalia Kiselyk</a><br/>' +
+            '  <span class="glyphicon glyphicon-copyright-mark"></span> NaUKMA, 2016</div>');
+            $(".text-center").html("Дякуємо, що завітали до нас!");
+            $(".lead.text-center").html("");
         }
         <security:authorize access="isAuthenticated()">
         function getUserPage(){
