@@ -5,9 +5,9 @@ import com.dream.like.uk.domain.entities.RankEntity;
 import com.dream.like.uk.services.IRankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.imageio.event.IIOReadProgressListener;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -20,27 +20,27 @@ public class RankServiceImpl implements IRankService {
 
 
     @Override
-    @org.springframework.transaction.annotation.Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
    public RankEntity getRankById( int id) {
-        return rankDao.getById(id);
+        return rankDao.get(id);
     }
 
     @Override
-    @org.springframework.transaction.annotation.Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
    public  List<RankEntity> getAllRanks() {
-          return null
+          return null;
    }
 
     @Override
-    @org.springframework.transaction.annotation.Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRED)
     public int addRank(RankEntity aRank) {
-
+        return 0; // temporary
     }
 
 
     @Override
-    @org.springframework.transaction.annotation.Transactional(propagation = Propagation.REQUIRED)
-    public  boolean removeRank(RankEntity aRank, int id) {
-        return  null
+    @Transactional(propagation = Propagation.REQUIRED)
+    public  boolean removeRank(int id) {
+        return  false;
     }
 }

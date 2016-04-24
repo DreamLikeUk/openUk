@@ -14,5 +14,5 @@ public interface IQuestionService {
 
     int addQuestion(QuestionEntity aQuestion);
 
-    boolean removeQuestion(QuestionEntity aQuestion, int id);
+    boolean removeQuestion(int id);
 }

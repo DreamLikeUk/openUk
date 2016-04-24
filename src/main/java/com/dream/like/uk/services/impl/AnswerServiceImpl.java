@@ -23,7 +23,12 @@ public class AnswerServiceImpl implements IAnswerService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public AnswerEntity getById(int id) {
-          return answerDao.getById(id);
+          return answerDao.get(id);
+    }
+
+    @Override
+    public List<AnswerEntity> getAllAnswers() {
+        return null;
     }
 
     @Override
@@ -34,7 +39,7 @@ public class AnswerServiceImpl implements IAnswerService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public boolean removeAnswer(AnswerEntity anAnswer, int id) {
+    public boolean removeAnswer(int id) {
          return false;
     }
 }

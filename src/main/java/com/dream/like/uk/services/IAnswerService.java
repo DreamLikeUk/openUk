@@ -16,6 +16,6 @@ public interface IAnswerService {
 
     int addAnswer(AnswerEntity anAnswer);
 
-    boolean removeAnswer(AnswerEntity anAnswer, int id);
+    boolean removeAnswer(int id);
 
 }

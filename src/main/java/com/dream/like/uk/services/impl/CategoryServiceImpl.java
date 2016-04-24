@@ -23,25 +23,25 @@ public class CategoryServiceImpl implements ICategoryService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public CategoryEntity getById(int id) {
-        return categoryDao.getById(id);
+        return categoryDao.get(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    List<CategoryEntity> getAllCategories() {
-       return null
+    public List<CategoryEntity> getAllCategories() {
+       return null;
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public int saveCaregory(CategoryEntity aCategory) {
+    public int saveCategory(CategoryEntity aCategory) {
         return -1;
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public boolean removeCategory(CategoryEntity aCategory, int id) {
+    public boolean removeCategory(int id) {
         return false;
     }
 
-    }
+
+}

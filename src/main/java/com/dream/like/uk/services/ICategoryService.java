@@ -19,7 +19,7 @@ public interface ICategoryService {
 
     int saveCaregory(CategoryEntity aCategory);
 
-    boolean removeCategory();
+    boolean removeCategory(int id);
 
 
     }

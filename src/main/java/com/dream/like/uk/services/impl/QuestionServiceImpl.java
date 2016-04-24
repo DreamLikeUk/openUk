@@ -24,13 +24,13 @@ public class QuestionServiceImpl implements IQuestionService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public QuestionEntity getById(int id) {
-        return questionDao.getById(id);
+        return questionDao.get(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public List<QuestionEntity> getAll() {
-        return null
+        return null;
     }
 
     @Override
@@ -41,7 +41,7 @@ public class QuestionServiceImpl implements IQuestionService{
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public boolean removeQuestion(QuestionEntity aQuestion, int id) {
-        return false
+    public boolean removeQuestion(int id) {
+        return false;
     }
 }

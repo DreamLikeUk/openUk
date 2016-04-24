@@ -17,14 +17,4 @@ public class CategoryDao extends BaseDao<CategoryEntity> implements ICategoryDao
     protected Class<CategoryEntity> getCurrentClass() {
         return CategoryEntity.class;
     }
-
-    @Override
-    public List<CategoryEntity> getAll() {
-        return get();
-    }
-
-    @Override
-    public CategoryEntity getById(int id) {
-        return get(id);
-    }
 }

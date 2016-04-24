@@ -15,6 +15,6 @@ public interface IRankService {
 
     int addRank(RankEntity aRank);
 
-    boolean removeRank(RankEntity aRank, int id);
+    boolean removeRank(int id);
 }
 

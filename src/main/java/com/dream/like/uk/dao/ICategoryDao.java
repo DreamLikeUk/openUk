@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface ICategoryDao {
 
-    List<CategoryEntity> getAll();
-    CategoryEntity getById(int id);
+    List<CategoryEntity> get();
+    CategoryEntity get(Integer id);
 
     /**
      * works for update and save
@@ -19,5 +19,7 @@ public interface ICategoryDao {
      * @return
      */
     CategoryEntity update(CategoryEntity categoryEntity);
+
+    boolean delete(int id);
 
 }

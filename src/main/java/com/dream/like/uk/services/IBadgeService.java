@@ -15,6 +15,6 @@ public interface IBadgeService {
 
     int addBadge(BadgeEntity aBadge);
 
-    boolean removeBadge(BadgeEntity aBadge, int id);
+    boolean removeBadge(int id);
 
     }
