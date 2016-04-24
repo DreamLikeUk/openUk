@@ -20,7 +20,6 @@
     <script src="/resources/js/ejs.min.js"> </script>
     <script src="/resources/js/md5.js"></script>
     <script type="text/javascript">
-
         getMain();
         var user_template = getTemplate("/resources/template/user.ejs");
         var category_template = getTemplate("/resources/template/category.ejs");
@@ -28,7 +27,7 @@
         var messages = {
           user:{
               username: '<spring:message code="user.username"/>',
-              email: '<spring:message code="user.username"/>'
+              email: '<spring:message code="user.email"/>'
           },
             category:{
                 button: '<spring:message code="category.button"/>'
@@ -36,6 +35,7 @@
         };
         function signUp(){
             $(".container.main").html(signup_template.render({}));
+            $(".lead.text-center").html('<spring:message code="main.please.signup"/>');
             $('.but.sub').click(function(e){
                 var user ={
                     'name': $("#Sname").val(),
@@ -58,6 +58,7 @@
         }
 
         function getMain(){
+            $(".lead.text-center").html('<spring:message code="main.message"/>');
             $.ajax({
                 type: "GET",
                 url: "/category/",
@@ -135,7 +136,7 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="hvr-bounce-to-bottom active"><a href="/"><spring:message code="main.home"/></a></li>
+                    <li class="hvr-bounce-to-bottom active"><a href="" onclick="getMain();"><spring:message code="main.home"/></a></li>
                     <security:authorize access="isAnonymous()">
                     <li class="hvr-bounce-to-bottom "><a href="/login"><spring:message code="main.signin"/></a></li>
                     <li class="hvr-bounce-to-bottom "><a href="#" onclick="signUp();"><spring:message code="main.signup"/></a></li>
@@ -156,7 +157,7 @@
     <div class="page-header">
         <h1 class="text-center"><spring:message code="main.title"/></h1>
     </div>
-    <p class="lead text-center"><spring:message code="main.message"/></p>
+    <p class="lead text-center" id="mess"><spring:message code="main.message"/></p>
     <div class="container main">
     </div>
     </div>
