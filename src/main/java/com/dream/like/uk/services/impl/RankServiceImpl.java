@@ -1,6 +1,7 @@
 package com.dream.like.uk.services.impl;
 
 import com.dream.like.uk.dao.IRankDao;
+import com.dream.like.uk.domain.entities.CategoryEntity;
 import com.dream.like.uk.domain.entities.RankEntity;
 import com.dream.like.uk.services.IRankService;
 import org.hibernate.criterion.Criterion;
@@ -8,13 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.imageio.event.IIOReadProgressListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by natalia on 4/23/16.
  */
-public class RankServiceImpl extends IDaoServiceImpl implements IRankService {
+public class RankServiceImpl extends DaoServiceImpl implements IRankService {
 
     @Autowired
     private IRankDao rankDao;
@@ -22,15 +25,19 @@ public class RankServiceImpl extends IDaoServiceImpl implements IRankService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-   public RankEntity getRankById( int id) {
+    public RankEntity getRankById(int id) {
         return rankDao.get(id);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-   public  List<RankEntity> getAllRanks() {
-          return rankDao.get();
-   }
+    public List<Map<String, Object>> getAllRanks() {
+        List<Map<String, Object>> ranks = new ArrayList<Map<String, Object>>();
+        for (RankEntity rank : rankDao.get()) {
+            ranks.add(convert(rank));
+        }
+        return ranks;
+    }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -53,5 +60,12 @@ public class RankServiceImpl extends IDaoServiceImpl implements IRankService {
     @Override
     public <T> Number count(Class<T> currentClass, Criterion... eq) {
         return null;
+    }
+
+    private Map<String, Object> convert(RankEntity rankEntity){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("name",rankEntity.getName());
+        map.put("points", rankEntity.getPoints());
+        return map;
     }
 }

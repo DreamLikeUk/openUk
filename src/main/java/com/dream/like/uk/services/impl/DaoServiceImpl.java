@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Created by natalia on 4/24/16.
  */
-public class IDaoServiceImpl implements IDaoService {
+public class DaoServiceImpl implements IDaoService {
     @Autowired
     private IDao dao;
 

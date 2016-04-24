@@ -1,24 +1,21 @@
 package com.dream.like.uk.services.impl;
 
 import com.dream.like.uk.dao.IAnswersDao;
-import com.dream.like.uk.dao.IDao;
 import com.dream.like.uk.domain.entities.AnswerEntity;
 import com.dream.like.uk.services.IAnswerService;
-import com.dream.like.uk.services.IDaoService;
-import org.hibernate.criterion.Criterion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by natalia on 4/23/16.
  */
 
 @Service
-public class AnswerServiceImpl extends IDaoServiceImpl implements IAnswerService {
+public class AnswerServiceImpl extends DaoServiceImpl implements IAnswerService {
 
     @Autowired
     private IAnswersDao answerDao;
@@ -31,9 +28,14 @@ public class AnswerServiceImpl extends IDaoServiceImpl implements IAnswerService
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<AnswerEntity> getAllAnswers() {
-        return answerDao.get();
+    public List<Map<String,Object>> getAllAnswers() {
+        List<Map<String, Object>> answers = new ArrayList<Map<String, Object>>();
+        for (AnswerEntity answ : answerDao.get()) {
+             answers.add(convert(answ));
+        }
+        return answers;
     }
+
 
 
     @Override
@@ -53,5 +55,10 @@ public class AnswerServiceImpl extends IDaoServiceImpl implements IAnswerService
          return false;
     }
 
-
+    private Map<String, Object> convert(AnswerEntity answerEntity){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("text",answerEntity.getText());
+        map.put("correct", answerEntity.isCorrect());
+        return map;
+    }
 }

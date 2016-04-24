@@ -2,18 +2,22 @@ package com.dream.like.uk.services.impl;
 
 import com.dream.like.uk.dao.IBadgeDao;
 import com.dream.like.uk.domain.entities.BadgeEntity;
+import com.dream.like.uk.domain.entities.CategoryEntity;
 import com.dream.like.uk.services.IBadgeService;
 import org.hibernate.criterion.Criterion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by natalia on 4/23/16.
  */
-public class BadgeServiceImpl extends IDaoServiceImpl implements IBadgeService {
+public class BadgeServiceImpl extends DaoServiceImpl implements IBadgeService {
 
     @Autowired
     private IBadgeDao badgeDao;
@@ -25,8 +29,12 @@ public class BadgeServiceImpl extends IDaoServiceImpl implements IBadgeService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<BadgeEntity> getAllBadges() {
-        return badgeDao.get();
+    public List<Map<String, Object>> getAllBadges() {
+        List<Map<String, Object>> badges = new ArrayList<Map<String, Object>>();
+        for (BadgeEntity badge : badgeDao.get()) {
+            badges.add(convert(badge));
+        }
+        return badges;
     }
 
     @Override
@@ -50,5 +58,12 @@ public class BadgeServiceImpl extends IDaoServiceImpl implements IBadgeService {
     @Transactional(propagation = Propagation.REQUIRED)
     public <T> Number count(Class<T> currentClass, Criterion... eq) {
         return null;
+    }
+
+    private Map<String, Object> convert(BadgeEntity badgeEntity){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("name",badgeEntity.getName());
+        map.put("badgeLink", badgeEntity.getLink());
+        return map;
     }
 }
