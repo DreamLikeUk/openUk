@@ -6,12 +6,18 @@
 http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-4.0.xsd">
-       <http auto-config="true" use-expressions="true">
-              <intercept-url pattern="/user**" access="hasAuthority('CAN_READ')" />
-           <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/>
-       </http>
+    <http auto-config="true" >
+        <intercept-url pattern="/user**" access="hasAuthority('CAN_READ')" />
+        <intercept-url pattern="/admin**" access="hasRole('ADMIN')" />
+        <intercept-url pattern="/dba**" access="hasRole('ADMIN') and hasRole('DBA')" />
+        <form-login  login-page="/login"
+                     username-parameter="ssoId"
+                     password-parameter="password"
+                     authentication-failure-url="/Access_Denied" />
+    </http>
 
-       <authentication-manager >
+
+    <authentication-manager >
               <authentication-provider user-service-ref="customUserDetailsService">
                      <password-encoder hash="md5"/>
               </authentication-provider>

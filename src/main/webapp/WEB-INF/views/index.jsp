@@ -91,8 +91,15 @@
             <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="hvr-bounce-to-bottom active"><a href="/"><spring:message code="main.home"/></a></li>
+                    <security:authorize access="isAnonymous()">
+                    <li class="hvr-bounce-to-bottom "><a href="/login"><spring:message code="main.signin"/></a></li>
+                    <li class="hvr-bounce-to-bottom "><a href="#"><spring:message code="main.signup"/></a></li>
+                    </security:authorize>
                     <li class="hvr-bounce-to-bottom "><a href="#" onclick="changeContainer();"><spring:message code="main.about"/></a></li>
-                    <li class="hvr-bounce-to-bottom "><a href="" onclick="getUserPage();"><spring:message code="main.user"/></a></li>
+                    <security:authorize access="isAuthenticated()">
+                        <li class="hvr-bounce-to-bottom "><a href="#" ><spring:message code="main.user"/></a></li>
+                    <li class="hvr-bounce-to-bottom "><a href="/logout"><spring:message code="main.logout"/></a></li>
+                    </security:authorize>
                 </ul>
                 <div class="clearfix"> </div>
             </div>
