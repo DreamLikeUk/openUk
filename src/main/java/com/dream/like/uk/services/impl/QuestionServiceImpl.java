@@ -5,8 +5,10 @@ import com.dream.like.uk.dao.IUserQuestionDao;
 import com.dream.like.uk.domain.entities.CategoryEntity;
 import com.dream.like.uk.domain.entities.QuestionEntity;
 import com.dream.like.uk.domain.entities.UserEntity;
+import com.dream.like.uk.domain.entities.UserQuestionEntity;
 import com.dream.like.uk.services.ICategoryService;
 import com.dream.like.uk.services.IQuestionService;
+import com.dream.like.uk.services.IUserService;
 import org.hibernate.criterion.Criterion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +33,8 @@ public class QuestionServiceImpl  implements IQuestionService{
 
     @Autowired
     private ICategoryService categoryService;
+    @Autowired
+    private IUserService userService;
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -78,12 +82,25 @@ public class QuestionServiceImpl  implements IQuestionService{
         List<Map<String, Object>>  questions = new ArrayList<Map<String, Object>>();
         int k = 0;
         for (QuestionEntity quest : allQuestions) {
+            if(quest.getAnswers().size()==0)
+                continue;
             if(k == 10)
                 break;
             questions.add(convert(quest));
             k++;
         }
         return questions;
+    }
+
+    @Override
+    public boolean putAnswer(int user, int question) {
+        UserEntity userE = userService.getUserById(user);
+        QuestionEntity questionEntity = getById(question);
+        UserQuestionEntity userQuestionEntity = new UserQuestionEntity();
+        userQuestionEntity.setQuestion(questionEntity);
+        userQuestionEntity.setUser(userE);
+        userQuestionEntity.setDate(new Date());
+        return userQuestionDao.update(userQuestionEntity)!=null;
     }
 
 

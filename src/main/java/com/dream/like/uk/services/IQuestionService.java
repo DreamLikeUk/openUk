@@ -22,4 +22,6 @@ public interface IQuestionService {
     List<QuestionEntity> getQuestionsByUser(int userEntity);
 
     List<Map<String,Object>> getQuestionsForUser(int userEntity, int category);
+
+    boolean putAnswer(int user, int question);
 }

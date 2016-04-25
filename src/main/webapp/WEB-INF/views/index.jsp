@@ -109,6 +109,7 @@
                     var coins = 0;
                     data.result.forEach(function(question) {
                        var temp1 = $(question_template.render({question: question}));
+                        var answers = [];
                         var correct = 0;
                         $.ajax({
                             type: "GET",
@@ -120,16 +121,52 @@
                             timeout: 100000,
                             success: function (data) {
                                 data.result.forEach(function(answer){
-                                    if(answer.correct)
-                                          correct = answer.id;
-                                    temp1.find(".que").append(answer_template.render({answer:answer}));
-                                    temp1.find('#que input').on('change', function() {
-                                       if(correct ==temp1.find('input[name=answer]:checked', '#que').val()){
-                                           coins++;
-                                           temp1.remove();
-                                       }
+
+                                        if (answer.correct)
+                                            correct = answer.id;
+                                        temp1.find(".que").append(answer_template.render({answer: answer}));
+                                        temp1.find('#que input').on('change', function () {
+                                            var h1 = temp1.find('input[name=answer]:checked', '#que').val();
+                                            if (correct == h1 ) {
+                                                if ((answers.indexOf(correct) > -1)) {}
+                                                else{
+                                                    $.ajax({
+                                                        type: "PUT",
+                                                        url: "/question/?user=" + '<security:authentication property="principal.id"/>&question=' + correct,
+                                                        contentType: 'application/json; charset=utf-8',
+                                                        data: "",
+                                                        dataType: 'json',
+                                                        async: true,
+                                                        success: function (data) {
+                                                            if(answers.indexOf(correct) > -1){}
+                                                            else{
+                                                            coins++;
+                                                            answers.push(correct);
+                                                                console.log(answers);
+                                                            temp1.remove();
+                                                                if ($(".container.main").contents().length == 0) {
+                                                                    $(".container.main").html("Ви набрали " + coins + "монеток з 10");
+                                                                    if (coins < 4)
+                                                                        $(".container.main").append("</br><em>Можливо Вам потрібно повторити правила</em>");
+
+                                                                }
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                            else{
+                                                temp1.remove();
+                                                if ($(".container.main").contents().length == 0) {
+                                                    $(".container.main").html("Ви набрали " + coins + "монеток з 10");
+                                                    if (coins < 4)
+                                                        $(".container.main").append("</br><em>Можливо Вам потрібно повторити правила</em>");
+
+                                                }
+                                            }
+                                            }
+                                        );
                                     });
-                                });
 
                             }
                         });

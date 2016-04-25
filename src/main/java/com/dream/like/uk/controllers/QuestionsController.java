@@ -30,5 +30,14 @@ private IQuestionService questionService;
         return responseBody;
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public AjaxResponseBody<Map<String,Object>> answerUser(@RequestParam("user") int id, @RequestParam("question") int category){
+        AjaxResponseBody<Map<String,Object>> responseBody = new AjaxResponseBody<Map<String,Object>>();
+        questionService.putAnswer(id,category);
+        responseBody.setResult(null);
+        responseBody.setCode("204");
+        return responseBody;
+    }
+
 
 }

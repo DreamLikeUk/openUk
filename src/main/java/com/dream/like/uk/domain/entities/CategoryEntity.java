@@ -24,7 +24,7 @@ public class CategoryEntity {
     private String name;
 
     @Column(name = "description")
-    @Length(max = 100)
+    @Length(max = 400)
     private String description;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
