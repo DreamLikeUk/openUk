@@ -140,7 +140,7 @@
                                                         success: function (data) {
                                                             if(answers.indexOf(correct) > -1){}
                                                             else{
-                                                            coins++;
+                                                            coins+4;
                                                             answers.push(correct);
                                                                 console.log(answers);
                                                             temp1.remove();
@@ -196,7 +196,26 @@
                     console.log("SUCCESS: ", data.result);
                     data.result.forEach(function(user){
                         $(".container.main").html(user_template.render({user:user, messages: messages}));
-                        $(".container.main").append(edit_template.render({}));
+                        $(".container.main").append(edit_template.render({user:user}));
+                        $(".btn.btn-primary.btn-md").click(function(e){
+                            var user ={
+                                'name': $("#Sname").val(),
+                                'email': $("#Semail").val(),
+                                'password': md5($("#Spass").val())
+                            }
+                            console.log(user);
+                            $.ajax({
+                                type: "PUT",
+                                url: "/user/",
+                                contentType: 'application/json; charset=utf-8',
+                                data: JSON.stringify(user),
+                                dataType: 'json',
+                                async: true,
+                                success : function(data) {
+                                    $(".container.main").html('Ви змінили свої дані ');
+                                }
+                            });
+                        });
                     });
                 },
                 error : function(e) {

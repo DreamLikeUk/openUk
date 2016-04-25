@@ -2,15 +2,15 @@
   <form role="form">
     <div class="form-group">
       <label for="usr">Напишіть нове ім'я:</label>
-      <input type="text" class="form-control" id="usr">
+      <input type="text" class="form-control" value="<%= user.name%>" id="Sname">
     </div>
     <div class="form-group">
           <label for="usr">Напишіть нову електронну адресу:</label>
-          <input type="text" class="form-control" id="usr">
+          <input type="text" class="form-control" value="<%= user.email %>" id="Semail">
         </div>
     <div class="form-group">
       <label for="pwd">Напишіть новий пароль:</label>
-      <input type="password" class="form-control" id="pwd">
+      <input type="password" class="form-control" id="Spass">
     </div>
     <button type="button" class="btn btn-primary btn-md">Змінити</button>
   </form>

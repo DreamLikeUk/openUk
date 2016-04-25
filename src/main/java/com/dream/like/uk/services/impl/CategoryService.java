@@ -1,6 +1,7 @@
 package com.dream.like.uk.services.impl;
 
 import com.dream.like.uk.dao.ICategoryDao;
+import com.dream.like.uk.domain.Category;
 import com.dream.like.uk.domain.entities.CategoryEntity;
 import com.dream.like.uk.services.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,21 @@ public class CategoryService implements ICategoryService {
     @Override
     public boolean removeCategory(int id) {
         return false;
+    }
+
+    @Override
+    public int putCategory(Category category) {
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setDescription(category.getDescription());
+        categoryEntity.setName(category.getName());
+        categoryEntity.setLink(category.getLink());
+        categoryDao.update(categoryEntity);
+        return 0;
+    }
+
+    @Override
+    public Map<String, Object> getCategory(int id) {
+        return convert(getById(id));
     }
 
     private Map<String, Object> convert(CategoryEntity categoryEntity){

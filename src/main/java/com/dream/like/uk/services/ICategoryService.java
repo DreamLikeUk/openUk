@@ -1,6 +1,7 @@
 package com.dream.like.uk.services;
 
 import com.dream.like.uk.dao.ICategoryDao;
+import com.dream.like.uk.domain.Category;
 import com.dream.like.uk.domain.entities.CategoryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,6 +22,8 @@ public interface ICategoryService {
     int saveCaregory(CategoryEntity aCategory);
 
     boolean removeCategory(int id);
+    int putCategory(Category category);
+    Map<String, Object> getCategory(int id);
 
 
     }

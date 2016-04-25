@@ -71,13 +71,20 @@ public class UserService implements IUserService {
 
     @Override
     public boolean saveUser(User user) {
-        UserEntity userEntity = new UserEntity();
+        UserEntity userEntity =getUserByMail(user.getEmail());
+        if(userEntity == null){
+        userEntity = new UserEntity();
         userEntity.setEmail(user.getEmail());
         userEntity.setActive(true);
         userEntity.setPassword(user.getPassword());
         userEntity.setUsername(user.getName());
         userEntity.setRoleEntity(roleService.getRole(3));
-        userEntity.setRankEntity(rankService.getRankById(1));
+        userEntity.setRankEntity(rankService.getRankById(1));}
+        else {
+            userEntity.setEmail(user.getEmail());
+            userEntity.setPassword(user.getPassword());
+            userEntity.setUsername(user.getName());
+        }
         return updateUser(userEntity)!=null;
     }
     private Map<String, Object> convert(UserEntity categoryEntity){
