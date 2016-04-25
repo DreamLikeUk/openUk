@@ -1,0 +1,13 @@
+UPDATE `openUk`.`answers` SET `id_question`='13' WHERE `id`='25';
+UPDATE `openUk`.`answers` SET `id_question`='13' WHERE `id`='23';
+UPDATE `openUk`.`answers` SET `id_question`='13' WHERE `id`='24';
+UPDATE `openUk`.`answers` SET `id_question`='14' WHERE `id`='26';
+UPDATE `openUk`.`answers` SET `id_question`='14' WHERE `id`='27';
+UPDATE `openUk`.`answers` SET `id_question`='14' WHERE `id`='28';
+UPDATE `openUk`.`answers` SET `id_question`='12' WHERE `id`='29';
+UPDATE `openUk`.`answers` SET `id_question`='12' WHERE `id`='30';
+UPDATE `openUk`.`answers` SET `id_question`='12' WHERE `id`='31';
+UPDATE `openUk`.`answers` SET `id_question`='9' WHERE `id`='1';
+UPDATE `openUk`.`answers` SET `id_question`='9' WHERE `id`='2';
+UPDATE `openUk`.`answers` SET `id_question`='1' WHERE `id`='3';
+UPDATE `openUk`.`answers` SET `id_question`='1' WHERE `id`='4';
