@@ -27,6 +27,7 @@
         var question_template = getTemplate("/resources/template/question.ejs");
         var answer_template = getTemplate("/resources/template/answer.ejs");
         var admin_template = getTemplate("/resources/template/admin.ejs");
+        var edit_template = getTemplate("/resources/template/editUserForm.ejs");
         var messages = {
           user:{
               username: '<spring:message code="user.username"/>',
@@ -118,6 +119,9 @@
                             success: function (data) {
                                 data.result.forEach(function(answer){
                                     temp1.find(".que").append(answer_template.render({answer:answer}));
+                                    temp1.find('#que input').on('change', function() {
+                                       alert(temp1.find('input[name=answer]:checked', '#que').val());
+                                    });
                                 });
 
                             }
@@ -148,6 +152,7 @@
                     console.log("SUCCESS: ", data.result);
                     data.result.forEach(function(user){
                         $(".container.main").html(user_template.render({user:user, messages: messages}));
+                        $(".container.main").append(edit_template.render({}));
                     });
                 },
                 error : function(e) {
