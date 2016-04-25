@@ -106,8 +106,10 @@
                 success: function (data) {
                     var temp = '';
                     $(".container.main").html(temp);
+                    var coins = 0;
                     data.result.forEach(function(question) {
                        var temp1 = $(question_template.render({question: question}));
+                        var correct = 0;
                         $.ajax({
                             type: "GET",
                             url: "/answer/",
@@ -118,9 +120,14 @@
                             timeout: 100000,
                             success: function (data) {
                                 data.result.forEach(function(answer){
+                                    if(answer.correct)
+                                          correct = answer.id;
                                     temp1.find(".que").append(answer_template.render({answer:answer}));
                                     temp1.find('#que input').on('change', function() {
-                                       alert(temp1.find('input[name=answer]:checked', '#que').val());
+                                       if(correct ==temp1.find('input[name=answer]:checked', '#que').val()){
+                                           coins++;
+                                           temp1.remove();
+                                       }
                                     });
                                 });
 

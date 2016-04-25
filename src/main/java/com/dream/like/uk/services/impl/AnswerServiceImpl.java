@@ -71,6 +71,7 @@ public class AnswerServiceImpl implements IAnswerService {
 
     private Map<String, Object> convert(AnswerEntity answerEntity){
         Map<String, Object> map = new HashMap<String, Object>();
+        map.put("id",answerEntity.getId());
         map.put("text",answerEntity.getText());
         map.put("correct", answerEntity.isCorrect());
         return map;
